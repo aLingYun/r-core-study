@@ -19,3 +19,8 @@ debug:
 		-ex 'file target/riscv64gc-unknown-none-elf/release/os' \
 		-ex 'set arch riscv:rv64' \
 		-ex 'target remote localhost:1234'
+
+b:
+	cargo build --release
+	rust-objcopy --binary-architecture=riscv64 target/riscv64gc-unknown-none-elf/release/ll_os --strip-all -O binary target/riscv64gc-unknown-none-elf/release/ll_os.bin
+
